@@ -33,6 +33,13 @@ namespace ApressSolution.Data
                     HowTo = "Create PostgreSQL Docker",
                     CommandLine = "docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres",
                     Platform = "Docker"
+                },
+                new Command
+                {
+                    Id = 4,
+                    HowTo = "Install EF Core",
+                    CommandLine = "dotnet tool install --global dotnet-ef",
+                    Platform = ".NET Core EF"
                 }
             };
         public void CreateCommand(Command command)
