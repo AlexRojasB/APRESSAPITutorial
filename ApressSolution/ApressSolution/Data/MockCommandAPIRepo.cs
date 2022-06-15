@@ -26,6 +26,13 @@ namespace ApressSolution.Data
                     HowTo = "List active migrations",
                     CommandLine = "dotnet ef migrations list",
                     Platform = ".NET Core EF"
+                },
+                new Command
+                {
+                    Id = 3,
+                    HowTo = "Create PostgreSQL Docker",
+                    CommandLine = "docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres",
+                    Platform = "Docker"
                 }
             };
         public void CreateCommand(Command command)
