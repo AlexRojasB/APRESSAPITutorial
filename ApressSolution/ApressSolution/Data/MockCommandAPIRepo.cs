@@ -40,6 +40,13 @@ namespace ApressSolution.Data
                     HowTo = "Install EF Core",
                     CommandLine = "dotnet tool install --global dotnet-ef",
                     Platform = ".NET Core EF"
+                },
+                new Command
+                {
+                    Id = 5,
+                    HowTo = "Set User Secrets",
+                    CommandLine = "dotnet user-secrets set \"Key\" \"value\"",
+                    Platform = ".Net Core"
                 }
             };
         public void CreateCommand(Command command)
