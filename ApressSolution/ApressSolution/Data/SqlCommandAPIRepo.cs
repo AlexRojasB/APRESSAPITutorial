@@ -12,7 +12,11 @@ namespace ApressSolution.Data
 
         public void CreateCommand(Command command)
         {
-            throw new NotImplementedException();
+            if (command is null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+            _context.Commands.Add(command);
         }
 
         public void DeleteCommand(Command command)
@@ -30,10 +34,7 @@ namespace ApressSolution.Data
             return _context.Commands.FirstOrDefault(p => p.Id == id);
         }
 
-        public bool SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
+        public bool SaveChanges() => _context.SaveChanges() >= 0;
 
         public void UpdateCommand(Command command)
         {

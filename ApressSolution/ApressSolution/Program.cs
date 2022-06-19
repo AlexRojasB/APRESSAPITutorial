@@ -12,6 +12,7 @@ var npgsqlBuilder = new NpgsqlConnectionStringBuilder();
 npgsqlBuilder.ConnectionString = builder.Configuration.GetConnectionString("PostgreSqlConnection");
 npgsqlBuilder.Username = builder.Configuration["UserID"];
 npgsqlBuilder.Password = builder.Configuration["Password"];
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<CommandContext>(opt => opt.UseNpgsql(npgsqlBuilder.ConnectionString));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
