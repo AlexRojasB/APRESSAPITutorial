@@ -38,7 +38,7 @@ namespace ApressSolution.Data
 
         public void UpdateCommand(Command command)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
