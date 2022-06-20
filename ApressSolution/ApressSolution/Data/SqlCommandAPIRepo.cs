@@ -21,7 +21,11 @@ namespace ApressSolution.Data
 
         public void DeleteCommand(Command command)
         {
-            throw new NotImplementedException();
+            if (command is null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+            _context.Commands.Remove(command);
         }
 
         public IEnumerable<Command> GetAllCommands()
