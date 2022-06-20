@@ -2,7 +2,7 @@ using ApressSolution.Models;
 
 namespace ApressSolution.Test
 {
-    public class CommandTests
+    public class CommandTests : IDisposable
     {
         Command? _testCommand;
         public CommandTests()
