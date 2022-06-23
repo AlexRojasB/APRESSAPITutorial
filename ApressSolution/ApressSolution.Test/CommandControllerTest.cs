@@ -138,6 +138,94 @@ namespace ApressSolution.Test
             Assert.IsType<ActionResult<CommandReadDto>>(result);
         }
 
+        [Fact]
+        public void CreateCommand_ReturnsCorrectResourceType_WhenValidObjectSubmitted()
+        {
+            //Arrange
+            _mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(new Command
+            {
+                Id = 1,
+                HowTo = "mock",
+                Platform = "mock",
+                CommandLine = "mock"
+            });
+            var controller = new CommandsController(_mockRepo.Object, _mapper);
+
+            //Act
+            var result = controller.CreateCommand(new CommandCreateDto { });
+
+            //Assert
+            Assert.IsType<ActionResult<CommandReadDto>>(result);
+        }
+
+        [Fact]
+        public void CreateCommand_Returns201Created_WhenValidObjectSubmitted()
+        {
+            //Arrange
+            _mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(new Command
+            {
+                Id = 1,
+                HowTo = "mock",
+                Platform = "mock",
+                CommandLine = "mock"
+            });
+            var controller = new CommandsController(_mockRepo.Object, _mapper);
+
+            //Act
+            var result = controller.CreateCommand(new CommandCreateDto { });
+
+            //Assert
+            Assert.IsType<CreatedAtRouteResult>(result.Result);
+        }
+
+        [Fact]
+        public void UpdateCommand_Returns2004NoContent_WhenValidObjectSubmitted()
+        {
+            //Arrange
+            _mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(new Command
+            {
+                Id = 1,
+                HowTo = "mock",
+                Platform = "mock",
+                CommandLine = "mock"
+            });
+            var controller = new CommandsController(_mockRepo.Object, _mapper);
+
+            //Act
+            var result = controller.UpdateCommand(1, new CommandUpdateDto { });
+
+            //Assert
+            Assert.IsType<NoContentResult>(result);
+        }
+
+        [Fact]
+        public void UpdateCommand_Returns404NotFound_WhenNonExistentResourceIDSubmitted()
+        {
+            //Arrange
+            _mockRepo.Setup(repo => repo.GetCommandById(0)).Returns(() => null);
+            var controller = new CommandsController(_mockRepo.Object, _mapper);
+
+            //Act
+            var result = controller.UpdateCommand(0, new CommandUpdateDto { });
+
+            //Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public void PartialCommandUpdate_Returns404NotFound_WhenNonExistentResourceIDSubmitted()
+        {
+            //Arrange
+            _mockRepo.Setup(repo => repo.GetCommandById(0)).Returns(() => null);
+            var controller = new CommandsController(_mockRepo.Object, _mapper);
+
+            //Act
+            var result = controller.PartialCommandUpdate(0, new Microsoft.AspNetCore.JsonPatch.JsonPatchDocument<CommandUpdateDto> { });
+
+            //Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
         private List<Command> GetCommands(int num)
         {
             var commands = new List<Command>();
