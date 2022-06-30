@@ -21,7 +21,7 @@ steps:
   inputs:
     command: publish
     publishWebProjects: false
-    projects: './ApressSolution/ApressSolution.csproj'
+    projects: './ApressSolution/ApressSolution/ApressSolution.csproj'
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
