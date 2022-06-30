@@ -12,6 +12,6 @@ steps:
   displayName: 'dotnet test'
   inputs:
     command: test
-    arguments: ./ApressSolution/ApressSolution.Test
+    arguments: './ApressSolution/ApressSolution.Test'
     projects: '**/*Tests/*.csproj'
     testRunTitle: 'xUNit Test Run'
