@@ -9,7 +9,7 @@ steps:
 - script: dotnet build ./ApressSolution --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet test'
+  displayName: 'dotnet test ./ApressSolution/ApressSolution.Test'
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
