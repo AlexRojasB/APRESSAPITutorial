@@ -9,9 +9,5 @@ steps:
 - script: dotnet build ./ApressSolution --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
+- script: dotnet test ./ApressSolution/ApressSolution.Test
   displayName: 'dotnet test'
-  inputs:
-    command: test
-    arguments: './ApressSolution/ApressSolution.Test'
-    projects: '**/*Tests/*.csproj'
-    testRunTitle: 'xUNit Test Run'
