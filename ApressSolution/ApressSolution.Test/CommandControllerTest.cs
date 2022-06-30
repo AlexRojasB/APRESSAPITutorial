@@ -252,7 +252,7 @@ namespace ApressSolution.Test
             //Arrange
             _mockRepo.Setup(repo => repo.GetCommandById(0)).Returns(() => null);
             var controller = new CommandsController(_mockRepo.Object, _mapper);
-
+             
             //Act
             var result = controller.DeleteCommand(0);
             //Assert
